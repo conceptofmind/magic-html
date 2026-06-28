@@ -79,16 +79,16 @@ class BaseExtractor:
                 if "hidden" in expr:
                     try:
                         if re.findall(
-                                "overflow-x:\s*hidden", subtree.attrib["style"]
+                                r"overflow-x:\s*hidden", subtree.attrib["style"]
                         ) or re.findall(
-                            "overflow-y:\s*hidden", subtree.attrib["style"]
+                            r"overflow-y:\s*hidden", subtree.attrib["style"]
                         ):
                             continue
                         if re.findall(
-                                "overflow:\s*hidden", subtree.attrib["style"]
+                                r"overflow:\s*hidden", subtree.attrib["style"]
                         ) and re.findall("height:", subtree.attrib["style"]):
                             height_px = re.findall(
-                                "height:\s*(\d+)", subtree.attrib["style"]
+                                r"height:\s*(\d+)", subtree.attrib["style"]
                             )[0]
                             if int(height_px) >= 800:
                                 continue
@@ -177,7 +177,7 @@ class BaseExtractor:
                 idx += 1
 
     def clean_unique_id(self, raw_element, content_html):
-        ids = re.findall(f' {Unique_ID}="(\d+)"', content_html)
+        ids = re.findall(fr' {Unique_ID}="\d+)"', content_html)
         self.drop_ids = list(set(self.drop_ids))
         self.drop_ids.sort()
         skip_ids = [-1]
@@ -216,10 +216,10 @@ class BaseExtractor:
                     except:
                         pass
 
-        content_html = re.sub(f' {Unique_ID}="\d+"', "", content_html)
+        content_html = re.sub(fr' {Unique_ID}="\d+"', "", content_html)
 
         drop_html = re.sub(
-            f' {Unique_ID}="\d+"',
+            fr' {Unique_ID}="\d+"',
             "",
             tostring(raw_element, encoding=str),
         )
@@ -477,7 +477,7 @@ class BaseExtractor:
             try:
                 expr = node.get("data-tex")
                 if text_strip(expr):
-                    expr = unquote(expr).replace("\&quot;", "").replace("&quot;", "")
+                    expr = unquote(expr).replace(r"\&quot;", "").replace("&quot;", "")
                     # Replace with a span
                     new_span = Element("span")
                     wrapped_expr = wrap_math(expr)

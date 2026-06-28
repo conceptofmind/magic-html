@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "magic-html"
+version = "0.1.6"
+description = "General-purpose HTML main-content extractor"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Apache-2.0" }
+authors = [
+  { name = "OpenDataLab" }
+]
+dependencies = [
+  "Brotli",
+  "cchardet==2.2.0a2",
+  "charset_normalizer",
+  "lxml<5.2.0",
+  "numpy",
+  "py_asciimath",
+  "urllib3",
+  "lxml_html_clean",
+]
+
+[project.urls]
+Homepage = "https://github.com/opendatalab/magic-html"
+Repository = "https://github.com/opendatalab/magic-html"
+
+[tool.setuptools]
+packages = ["magic_html", "magic_html.extractors"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+magic_html = ["mmltex/*.xsl"]
