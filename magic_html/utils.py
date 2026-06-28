@@ -18,7 +18,7 @@ except ImportError:
     brotli = None
 
 try:
-    from cchardet import detect as cchardet_detect
+    from chardet import detect as cchardet_detect
 except ImportError:
     cchardet_detect = None
 

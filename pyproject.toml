@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "magic-html"
-version = "0.1.6"
+version = "0.1.8"
 description = "General-purpose HTML main-content extractor"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -14,9 +14,9 @@ authors = [
 ]
 dependencies = [
   "Brotli",
-  "cchardet==2.2.0a2",
+  "chardet",
   "charset_normalizer",
-  "lxml<5.2.0",
+  "lxml",
   "numpy",
   "py_asciimath",
   "urllib3",
